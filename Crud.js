@@ -1,35 +1,35 @@
-
 import React, {useState} from 'react'
 import './Crud.css';
 
 // Component
 
 const Crud = () => {
-  // Using multpile state.
-/*const [Name,setName] = useState(""); // It is a hook that let us to add state variables.
-  const [Email,setEmail] = useState(""); 
-  const [data,setData] = useState([]);
-*/
-
 // Using object
-const [form,setForm] = useState({});
 const [data,setData] = useState([]);
-
+const [form,setForm] = useState({Name:'',Email:''});
 
   // Function to add data in a array of objects.
-  const addData = () => {
+  const addData = (e) => {
+    e.preventDefault();
       setData([...data,form])
-      setForm(form);
-      // setName("");
-      // setEmail("");
-    }
+      setForm({...data,Name:'',Email:''});
+      }
  
     // delete function
     let deletData = (index) =>{
-      let arr = data;
-      arr.splice(index,1);
-      setData([...arr]);
+      const newItems = [...data];
+      newItems.splice(index,1);
+      setData(newItems);
     }
+
+    // edit function
+    let editData = (index) =>{
+    let newItems = [...data];
+    setForm(newItems[index]);
+    newItems.splice(index,1)
+    setData(newItems);
+    }
+
 
   return ( //always return JSX only.
     <> 
@@ -39,6 +39,7 @@ const [data,setData] = useState([]);
       </h1>
     </div>
 
+<form onSubmit={addData}>
     <div className='Form'>
     <div className='fields'> 
 
@@ -49,7 +50,7 @@ const [data,setData] = useState([]);
     <input type="text" value={form.Name} onChange={(event)=>setForm({...form,Name:event.target.value})} id="name"  placeholder='Enter your name'/> 
     <input type="email" value={form.Email} onChange={(event)=>setForm({...form,Email:event.target.value})} id="email" placeholder='Enter your mail' />
     </div>
-    <button className='btn' onClick={addData}>Add</button> 
+    <button  type='submit'className='btnAdd'>Add</button> 
     </div>
 
     <div className="tableHead">
@@ -57,17 +58,22 @@ const [data,setData] = useState([]);
             <h2>Email</h2>
             <h2>Action</h2>
   </div>
-
-  {/* Showing all the data in a table */}
-  
+  </form>
+{/* //Read & Delete   */}
   {
          data.map((item,index) =>  {
           return(
+            <>
             <div key={index} className="data">
             <h4>{item.Name}</h4>
             <h4>{item.Email}</h4>
-            <button type="button" class="btn btn-danger" onClick={() => deletData(index)}>Delete</button>
+            <div>
+            <button  type="button"  className='btnd' onClick={() => deletData(index)}>Delete</button>
+            <button  type="button" className='btne' onClick={() => editData(index)}>Edit</button>
+            </div>
+            
             </div>            
+            </>
           )
         })
         }
