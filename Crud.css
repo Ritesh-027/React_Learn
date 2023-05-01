@@ -33,7 +33,7 @@ padding: 15px;
     width: 25%;
     font-size: 1.5rem;
 }
-.btn{
+.btnAdd{
     border-radius: 10px;
     background: #2C3A47;
     color: hotpink;
@@ -43,28 +43,45 @@ padding: 15px;
     font-size: 1.5rem;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-color:aquamarine;
-    }
+}
+.btnd{
+    margin: 2px;
+    padding: 3px;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+}
+
+.btne{
+    margin: 2px;
+    padding: 3px;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+}
+
+
 .table{
     text-align: center;
 }
 .tableHead{
     color: darkblue;
-    display:flex;
     justify-content: space-between;
+    display:flex;
     align-items: center;
-    margin-left: 365px;
-    width: 60%;
-    padding: 10px;
+    margin: auto;
+    width: 50%;
+    padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .data{
-    margin: 10px;
     background-color: #f8a5c2;
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 365px;
-    width: 60%;
+    margin: auto;
+    margin-top:10px !important;
+    width: 50%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
